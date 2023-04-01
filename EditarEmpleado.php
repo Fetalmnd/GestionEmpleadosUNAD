@@ -1,21 +1,23 @@
 <!-- Andres Morcillo-->
 <?php
- include ("database.php");
-if (isset($_GET['id'])){
- 
-    $id = $_GET['id'];
-    $query = "SELECT * FROM empleados WHERE ID = '$id'";
-    $result = mysqli_query($conn, $query);
-    if (mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_array($result);
-        $CodigoEmpleado = $row ['CODIGOEMPLEADO'];   
-        $Identificacion = $row ['IDENTIFICACION'];
-        $Nombres = $row ['NOMBRES'];
-        $Apellidos = $row ['APELLIDOS'];
-        $Email = $row ['EMAIL'];
-        $Telefono = $row ['TELEFONO'];
+    include("includes/header.php");
+    include ("database.php");
+    
+    if (isset($_GET['id'])){
+    
+        $id = $_GET['id'];
+        $query = "SELECT * FROM empleados WHERE ID = '$id'";
+        $result = mysqli_query($conn, $query);
+        if (mysqli_num_rows($result) == 1) {
+            $row = mysqli_fetch_array($result);
+            $CodigoEmpleado = $row ['CODIGOEMPLEADO'];   
+            $Identificacion = $row ['IDENTIFICACION'];
+            $Nombres = $row ['NOMBRES'];
+            $Apellidos = $row ['APELLIDOS'];
+            $Email = $row ['EMAIL'];
+            $Telefono = $row ['TELEFONO'];
+        }
     }
-}
 
 
 if (isset($_POST['Update'])){
@@ -40,7 +42,7 @@ if (isset($_POST['Update'])){
 
 
 ?>
-<? php include ("includes/header.php")?>
+
 
 <div class="container p-6">
      <div class="row">
@@ -76,4 +78,4 @@ if (isset($_POST['Update'])){
 </div>
 
 
-<? php include ("includes/footer.php")?>
+<?php include ("includes/footer.php")?>
