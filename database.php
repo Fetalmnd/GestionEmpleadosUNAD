@@ -5,10 +5,9 @@ session_start();
 
 
 $conn = mysqli_connect(
-    'localhost',
-    'root',
-    '',
-    'employees'
-
+    'sql112.epizy.com',
+    'epiz_33923845',
+    '9p1ksybc',
+    'epiz_33923845_employees'
 );
 ?>

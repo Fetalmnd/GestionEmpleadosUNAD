@@ -1,6 +1,7 @@
 <?php
 include("database.php");
 
+// Funcion encargada de almacenar el empleado en labase de datos
 if(isset($_POST["CrearEmpleado"])){
     $CodigoEmpleado = $_POST["CODIGOEMPLEADO"];
     $Identificacion = $_POST["IDENTIFICACION"];

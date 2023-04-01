@@ -1,11 +1,13 @@
 <?php include("database.php");?>
 <?php include("includes/header.php");?>
 <?php 
-
+// Función Encargada de realizar la busqueda por Codigo de Empleado
     if(isset(($_POST["Buscar"]))){
- 
-        $CodigoEmpleado = $_POST["q"];
 
+        //Obtenemos el Codigo ingresado en el input
+        $CodigoEmpleado = $_POST["BuscarEmpleado"];
+
+        //Si está vacio obtenemos todos los empleados
         if($CodigoEmpleado == "" || $CodigoEmpleado == null){
             $query = "SELECT * FROM empleados";
         }
@@ -13,7 +15,6 @@
             $query = "SELECT * FROM empleados WHERE CODIGOEMPLEADO = '$CodigoEmpleado'";
         }
         
-             
         $resultado = mysqli_query($conn, $query);
 
         if(!$resultado){
@@ -21,15 +22,16 @@
         }
     }
     else{
-        
+        //Al iniciar la app se listan todos los empleados
         $query = "SELECT * FROM empleados";
         $resultado = mysqli_query($conn, $query);
     }
 ?>
+
 <div class="container p-4">
     <div class="row">
         <form action="index.php" method="POST">
-            <input type="text" name="q" placeholder="Buscar con código" style="padding: 10px; border-radius: 5px 5px 5px 5px; font-size: 16px; width: 60%; height: 80%">
+            <input type="text" name="BuscarEmpleado" placeholder="Buscar con código" style="padding: 10px; border-radius: 5px 5px 5px 5px; font-size: 16px; width: 60%; height: 80%">
             <button type="submit" style="background-color: #4CAF50; color: white; border: none; border-radius: 5px 5px 5px 5px; cursor: pointer; width: 30%; height: 80%" name="Buscar">Buscar</button>
         </form>
     </div>

@@ -2,7 +2,7 @@
 <?php
     include("includes/header.php");
     include ("database.php");
-    
+    // Funcion encargada de listar los datos del empleado a Editar
     if (isset($_GET['id'])){
     
         $id = $_GET['id'];
@@ -19,7 +19,7 @@
         }
     }
 
-
+//Función encargada de actualizar los datos del empleado
 if (isset($_POST['Update'])){
    $id = $_GET['id'];
    $CodigoEmpleado = $_POST['CODIGOEMPLEADO'];
