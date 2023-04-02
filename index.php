@@ -66,7 +66,7 @@
                             <td><?php echo($row["TELEFONO"]);?></td>
                             <td>
                                 <a href="EditarEmpleado.php?id=<?php echo $row["ID"] ?>" class="btn btn-warning"><i class="fas fa-pen"></i></a>
-                                <a href="EliminarEmpleado.php?id=<?php echo $row["ID"] ?>" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalEliminarEmpleado" data-value="<?php echo $row["ID"] ?>"><i class="fas fa-trash"></i></button>
                             </td>
                         </tr>
                     <?php } ?>
@@ -135,6 +135,40 @@
   </div>
 </div>
 
+<!-- Modal para eliminar empleado -->
+<div class="modal fade" id="ModalEliminarEmpleado" tabindex="-1" role="dialog" aria-labelledby="ModalEliminarEmpleadoLabel">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title" id="ModalEliminarEmpleadoLabel">Eliminar Empleado</h4>
+	      </div>
+          <form action="EliminarEmpleado.php" method="POST">
+	        <div class="modal-body">
+                <p>Está seguro que desea eliminar el empleado?</p>
+                <div class="form-group">
+                        <input type="text" name="TextId" hidden = true>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" name="BorrarEmpleado" value="Eliminar" class="btn btn-danger btn-block">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            </div>
+          </form>     
+	    </div>
+    </div>
+</div>
 
+<script>
+    console.log('click');
+		$('#ModalEliminarEmpleado').on('show.bs.modal', function (event) {
+            debugger;
+			var button = $(event.relatedTarget);
+			var id = button.data('value');
+            console.log(id);
+			var modal = $(this);
+			var infoText = document.getElementsByName("TextId")[0];
+			infoText.value =id;
+		});
+	</script>
 
 <?php include("includes/footer.php") ?>
